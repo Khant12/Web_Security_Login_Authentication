@@ -4,9 +4,18 @@ require "../private/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+
+
+// Restrict access if the user has not logged in
+if ((!isset($_SESSION['allow_2fa'])) || $_SESSION['allow_2fa'] !== true) {
+    // Redirect to login.php if the session is not set
+    header('Location: login.php');
+    exit();
+}
+
 
 // Initialize message variable
 $message = '';

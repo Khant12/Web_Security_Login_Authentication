@@ -29,7 +29,7 @@ if ($isValid) {
     $_SESSION['redirect_after_delay'] = true;
     header('Location: 2fa.php'); // Redirect to the same page to show the message first
 } else {
-    $_SESSION['otp_message'] = 'Invalid OTP! Please scan QR again.';
+    $_SESSION['otp_message'] = 'Invalid OTP! Enter Correct OTP again.';
     header('Location: 2fa.php'); // Redirect back to show the error
 }
 exit;

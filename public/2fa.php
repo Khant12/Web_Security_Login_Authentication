@@ -6,55 +6,57 @@ use PragmaRX\Google2FA\Google2FA;
 use BaconQrCode\Renderer\GDLibRenderer;
 use BaconQrCode\Writer;
 
-// Start Session
-if(!session_id())
-{
+// Start Session if not started already
+if (!session_id()) {
     session_start();
 }
 
-
 // Restrict access if the user has not logged in
 if ((!isset($_SESSION['allow_2fa'])) || $_SESSION['allow_2fa'] !== true) {
-    // Redirect to login.php if the session is not set
     header('Location: login.php');
     exit();
 }
 
-
-
-// Initialize
+// Initialize Google2FA
 $googleOTP = new Google2FA();
 
-// Generate a secret key
-$user = [
-    'google2fa_secret' => $googleOTP->generateSecretKey(), 
-    'email' => 'honeypot@gmail.com'
-];
+// Check if the secret key is already set in the session
+if (!isset($_SESSION['user']['google2fa_secret'])) {
+    // Generate a new secret key only if not already set
+    $_SESSION['user'] = [
+        'google2fa_secret' => $googleOTP->generateSecretKey(),
+        'email' => 'honeypot@gmail.com'
+    ];
 
-// Store user data in the session
-$_SESSION['user'] = $user;
+}
+
+// Use the stored secret key
+$secretKey = $_SESSION['user']['google2fa_secret'];
+$email = $_SESSION['user']['email'];
 
 // Provide name of app
 $app_name = 'Honeypot Google OTP';
 
-// Generate a custom URL from user data
-$qrCodeUrl = $googleOTP->getQRCodeUrl($app_name, $user['email'], $user['google2fa_secret']);
+// Generate the QR Code URL using the secret key
+$qrCodeUrl = $googleOTP->getQRCodeUrl($app_name, $email, $secretKey);
 
 // Generate QR Code image with GD
 $imageSize = 250;
-$writer = new Writer(
-    new GDLibRenderer($imageSize)
-);
+$writer = new Writer(new GDLibRenderer($imageSize));
 
 // Create a string with the image base64 data
 $encoded_qr_data = base64_encode($writer->writeString($qrCodeUrl));
 
-// Check if a message exists
+// Check if a message exists in the session (e.g., OTP verification result)
 $message = $_SESSION['otp_message'] ?? '';
 
-
+// Clear the OTP message after it is displayed
+if (isset($_SESSION['otp_message'])) {
+    unset($_SESSION['otp_message']);
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -177,7 +179,9 @@ $message = $_SESSION['otp_message'] ?? '';
                 <input type="text" name="otp" id="otp" class="form-control" placeholder="Input OTP code" required>
             </div>
             <button type="submit" class="btn btn-custom">Verify</button>
-        </form>
+        </form><br>
+        <hr>
+        <p class="text-center"><a href="logout.php">Back to Login</a></p>
     </div>
 </div>
 

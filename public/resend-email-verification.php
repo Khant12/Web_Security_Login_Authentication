@@ -76,6 +76,8 @@ require "../private/autoload.php";
             </div>
             <button type="submit" name="resend-email-verify-btn" class="btn w-100"  style="background-color: #003155; color:#fff;">Resend</button>
         </form>
+        <hr>
+        <p class="text-center"><a href="login.php">Back to Login</a></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

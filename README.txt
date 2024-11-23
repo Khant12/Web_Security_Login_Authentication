@@ -69,6 +69,30 @@ If you encounter the error **"MySQL shutdown unexpectedly"**, follow the guide p
 
 ---
 
+### Step 1: Install Google Authenticator App
+
+1. Download the Google Authenticator App:
+   - **For Android**: Go to the [Google Play Store](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) and search for **Google Authenticator**.
+   - **For iOS**: Go to the [App Store](https://apps.apple.com/us/app/google-authenticator/id388497605) and search for **Google Authenticator**.
+   
+2. Install the App:
+   - Follow the on-screen instructions to install the app on your smartphone.
+
+
+### Step 2: Scan the QR Code with Google Authenticator
+
+1. Open Google Authenticator:
+   - Open the Google Authenticator app on your smartphone.
+
+2. Scan the QR Code:
+   - Tap the "+" icon in the Google Authenticator app to add a new account.
+   - Select "Scan a QR code".
+   - Use your phone’s camera to scan the QR code displayed on your web page.
+
+   The app will add the account and start generating OTPs.
+   
+--- 
+
 ### Changing Admin Role in Database
 
 To manually set a user’s role as **admin**, follow these steps:
@@ -90,7 +114,7 @@ To manually set a user’s role as **admin**, follow these steps:
      - **role**: `admin`
    - Click **Go** or **Save** to update the user’s role.
 
----
+--- 
 
 ### Further Questions
 

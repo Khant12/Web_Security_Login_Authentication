@@ -6,9 +6,9 @@ require "../private/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
@@ -48,7 +48,7 @@ if (!$stmt->execute()) {
 
 // Generate the verification and rejection links
 $verification_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/public/confirm-login.php?token=$token";
-$rejection_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/public/reject-login.php?token=$token";
+$rejection_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/public/logout.php?token=$token";
 
 // Send the email with PHPMailer
 $mail = new PHPMailer(true);
