@@ -118,7 +118,7 @@ if (isset($_GET['token'])) {
                             // Content
                             $mail->isHTML(true);
                             $mail->Subject = 'Password Changed Successfully';
-                            $mail->Body = "Hello, your password has been successfully updated.";
+                            $mail->Body = "Your password has been successfully changed. If you did not request this change, please contact support immediately.";
     
                             // Send the email
                             $mail->send();

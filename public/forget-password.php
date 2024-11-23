@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
     
             // Create the reset link
-            $reset_link = "http://localhost/login/public/reset-password.php?token=$reset_token";
+            $reset_link = "http://localhost/Web_Security_Login_Authentication/public/reset-password.php?token=$reset_token";
     
             // Initialize PHPMailer
             $mail = new PHPMailer(true);

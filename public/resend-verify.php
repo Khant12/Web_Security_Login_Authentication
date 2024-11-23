@@ -32,7 +32,7 @@ function resend_email_verify($username, $email, $verify_token)
     <h2>Verify Your Email To Login</h2>
     <h5>Click the below link</h5>
     <br/><br/>
-    <a href='http://localhost/login/public/verify-email.php?token=$verify_token'> Verify Account</a>
+    <a href='http://localhost/Web_Security_Login_Authentication/public/verify-email.php?token=$verify_token'> Verify Account</a>
     ";
 
     $mail->Body = $email_template;

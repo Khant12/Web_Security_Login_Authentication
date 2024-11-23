@@ -47,8 +47,8 @@ if (!$stmt->execute()) {
 }
 
 // Generate the verification and rejection links
-$verification_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/public/confirm-login.php?token=$token";
-$rejection_link = "http://" . $_SERVER['HTTP_HOST'] . "/login/public/logout.php?token=$token";
+$verification_link = "http://" . $_SERVER['HTTP_HOST'] . "/Web_Security_Login_Authentication/public/confirm-login.php?token=$token";
+$rejection_link = "http://" . $_SERVER['HTTP_HOST'] . "/Web_Security_Login_Authentication/public/logout.php?token=$token";
 
 // Send the email with PHPMailer
 $mail = new PHPMailer(true);

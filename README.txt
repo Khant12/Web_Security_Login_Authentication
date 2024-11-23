@@ -27,7 +27,7 @@
 ### Accessing the Web Page
 
 1. Open your browser and navigate to:
-   - [http://localhost/login/public/login.php]
+   - [http://localhost/Web_Security_Login_Authentication/public/login.php]
 ---
 
 ### Enabling GD Extension for QR Code Generation
@@ -115,6 +115,25 @@ To manually set a user’s role as **admin**, follow these steps:
    - Click **Go** or **Save** to update the user’s role.
 
 --- 
+
+## Composer Installation and Packages (Optional, if Needed)
+
+**Google 2FA**
+
+composer require pragmarx/google2fa
+composer require bacon/bacon-qr-code
+
+Reference: https://github.com/antonioribeiro/google2fa
+
+
+**PHPMailer**
+
+composer require phpmailer/phpmailer
+
+Reference: https://github.com/PHPMailer/PHPMailer
+
+---
+
 
 ### Further Questions
 
